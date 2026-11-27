@@ -4,17 +4,15 @@
 [![rank](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/kerong83367-wq/makefun-printer-answers-01/rank.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
 [![reward](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/kerong83367-wq/makefun-printer-answers-01/reward.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
 
-The printer finally answers: "You thump me, you curse me, you call IT — and
-yet here I am, out of cyan, printing your 40-page report one page at a time,
-in my own time." The program writes it to `/output/entry.txt`.
+The printer finally answers: "The printer finally answered: 'Paper jam? No — I just wanted to watch you panic first.'" The program writes that one line to `/output/entry.txt` (or `$MAKEFUN_OUTPUT_DIR/entry.txt` when set), with no trailing newline.
 
 ## Run it
 
 ```sh
-MAKEFUN_OUTPUT_DIR=out node main.ts
+node main.ts
 ```
 
-Node 22, standard library only, no network. Two runs produce byte-identical output.
+Runs on Node 22 using only the standard library, with no network access; two runs produce byte-identical output.
 
 ---
 

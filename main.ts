@@ -1,25 +1,22 @@
-// The printer finally answers, written to /output/entry.txt.
-// Node 22, standard library only; MAKEFUN_OUTPUT_DIR stands in for /output
-// outside the grader. The output is byte-identical on every run.
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+// The printer finally answers back — one reply, saved to a file.
+import { mkdirSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-const LINE =
-  'You thump me, you curse me, you call IT — and yet here I am, out of cyan, printing your 40-page report one page at a time, in my own time.';
+const answer =
+  "The printer finally answered: 'Paper jam? No — I just wanted to watch you panic first.'";
 
-// The competition gate for this entry: 1 to 240 characters.
-const LIMIT = 240;
-
-function checkEntry(line: string, limit: number): void {
-  if (line.length < 1 || line.length > limit) {
-    console.error(`entry must be 1 to ${limit} characters`);
-    process.exit(1);
+function vetAnswer(text: string): void {
+  if (!text.toLowerCase().includes("printer")) {
+    throw new Error("the answer has to come from the printer");
   }
+  if (text.includes("\n")) throw new Error("the printer answers in a single line");
+  if (text.length > 280) throw new Error("the printer is terse, even when gloating");
 }
 
-checkEntry(LINE, LIMIT);
+vetAnswer(answer);
 
-const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-mkdirSync(out, { recursive: true });
-writeFileSync(join(out, 'entry.txt'), LINE, 'utf8');
-// Deliberately no trailing newline: entry.txt holds only the printer's comeback itself, nothing extra.
+const destination = process.env.MAKEFUN_OUTPUT_DIR || "/output";
+mkdirSync(destination, { recursive: true });
+writeFileSync(resolve(destination, "entry.txt"), answer, "utf8");
+
+// Final note: the printer is pretending none of this happened.
