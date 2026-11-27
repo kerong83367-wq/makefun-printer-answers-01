@@ -22,4 +22,4 @@ checkEntry(LINE, LIMIT);
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 mkdirSync(out, { recursive: true });
 writeFileSync(join(out, 'entry.txt'), LINE, 'utf8');
-// No trailing newline: entry.txt is exactly the printer's comeback, nothing else.
+// Deliberately no trailing newline: entry.txt holds only the printer's comeback itself, nothing extra.
